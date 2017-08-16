@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/PoppyCat.csproj"
+                "${workspaceRoot}/poppy.cat.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

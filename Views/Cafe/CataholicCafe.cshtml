@@ -1,0 +1,77 @@
+@{
+    ViewBag.Title = "Booking";
+}
+<h2>@ViewBag.Title.</h2>
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <center>
+            <form>
+                Date :
+                <input type="date" id="checkinDate" /> -
+                <input type="date" id="checkoutDate" onchange="myFunction()"/> <br /><br />
+                <script type="text/javascript">
+                    myFunction = function () {
+
+                        var chkInDate = new Date(document.getElementById("checkinDate").value);
+
+                        var chkOutDate = new Date(document.getElementById("checkoutDate").value);
+                        var timeDiff = Math.abs(chkOutDate.getTime() - chkInDate.getTime());
+                        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                        document.getElementById("diff").innerHTML = diffDays
+
+                        var price = 50 * diffDays;
+                        document.getElementById("price_total").innerHTML = price;
+                    }
+                </script>
+             
+
+            </form>
+        </center>
+        <div id="myCarousel" class="carousel"
+             style="margin-left:7%;margin-right:7%;height:100% ;margin-top:20px;" data-ride="carousel">
+            <!-- Indicators -->
+            <ol id="carousel-indicators" class="carousel-indicators" style="z-index: 15;">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="http://p4.isanook.com/tr/0/rp/r/w600/ya0xa0m1w0/aHR0cDovL3A0LmlzYW5vb2suY29tL3RyLzAvdWQvMjc5LzEzOTU4OTMvMTEuanBn.jpg" style="width:1024px; height:400px;">
+                </div>
+                <div class="item">
+                    <img src="http://p4.isanook.com/tr/0/rp/r/w600/ya0xa0m1w0/aHR0cDovL3A0LmlzYW5vb2suY29tL3RyLzAvdWQvMjc5LzEzOTU4OTMvMTIuanBn.jpg" style="width:1024px; height:400px;">
+                </div>
+                <div class="item">
+                    <img src="http://p4.isanook.com/tr/0/rp/r/w600/ya0xa0m1w0/aHR0cDovL3A0LmlzYW5vb2suY29tL3RyLzAvdWQvMjc5LzEzOTU4OTMvMTMuanBn.jpg" style="width:1024px; height:400px;">
+                </div>
+                <div class="item">
+                    <img src="http://p4.isanook.com/tr/0/rp/r/w600/ya0xa0m1w0/aHR0cDovL3A0LmlzYW5vb2suY29tL3RyLzAvdWQvMjc5LzEzOTU4OTMvMTQuanBn.jpg" style="width:1024px; height:400px;">
+                </div>
+            </div>
+        </div>
+        <br />
+        <center>
+            $50 x <span id="diff"> 0 </span> days <br />
+            Total : <span id="price_total"> 0 </span> $
+        </center>
+
+
+        <center><button type="submit" class="btn btn-success" style="height:75px;width:200px">
+            Request Book
+        </button></center>
+
+    </div>
+</body>
+</html>

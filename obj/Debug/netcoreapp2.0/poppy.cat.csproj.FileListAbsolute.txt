@@ -1,0 +1,12 @@
+c:\Users\Chi\Documents\poppy.cat\bin\Debug\netcoreapp2.0\app.db
+c:\Users\Chi\Documents\poppy.cat\bin\Debug\netcoreapp2.0\poppy.cat.deps.json
+c:\Users\Chi\Documents\poppy.cat\bin\Debug\netcoreapp2.0\poppy.cat.runtimeconfig.json
+c:\Users\Chi\Documents\poppy.cat\bin\Debug\netcoreapp2.0\poppy.cat.runtimeconfig.dev.json
+c:\Users\Chi\Documents\poppy.cat\bin\Debug\netcoreapp2.0\poppy.cat.dll
+c:\Users\Chi\Documents\poppy.cat\bin\Debug\netcoreapp2.0\poppy.cat.pdb
+c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.csproj.CoreCompileInputs.cache
+c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.AssemblyInfoInputs.cache
+c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.AssemblyInfo.cs
+c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.dll
+c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.pdb
