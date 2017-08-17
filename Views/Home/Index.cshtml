@@ -12,47 +12,47 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="~/images/c1.png" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
+            <!-- <div class="carousel-caption" role="option">
                 <p>
                     Learn how to build ASP.NET apps that can run anywhere.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
                         See More
                     </a>
                 </p>
-            </div>
+            </div> -->
         </div>
         <div class="item">
             <img src="~/images/c2.png" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
+            <!-- <div class="carousel-caption" role="option">
                 <p>
                     There are powerful new features in Visual Studio for building modern web apps.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
                         See More
                     </a>
                 </p>
-            </div>
+            </div> -->
         </div>
         <div class="item">
             <img src="~/images/c3.png" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
+            <!-- <div class="carousel-caption" role="option">
                 <p>
                     Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
                         See More
                     </a>
                 </p>
-            </div>
+            </div> -->
         </div>
         <div class="item">
             <img src="~/images/c4.png" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
+            <!-- <div class="carousel-caption" role="option">
                 <p>
                     Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
                         See More
                     </a>
                 </p>
-            </div>
+            </div> -->
         </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -65,44 +65,176 @@
     </a>
 </div>
 
-<div class="row">
+<br />
+
+<div class="row" style="font-family:Verdana">
     <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
+        <h3>Where</h3>
+        <ul style="padding-left:0;">
+            <input type="text" class="form-control" id="where" placeholder="City, address">
+        </ul>
+    </div>
+    <div class="col-md-2">
+        <h3>Guests</h3>
+        <ul style="padding-left:0;">
+            <select class="form-control" placeholder="Anytime">
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="m">More</option>
+            </select>
         </ul>
     </div>
     <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
+        <h3>Check In</h3>
+        <ul style="padding-left:0;">
+            <input class="form-control" type="date" id="checkinDate" />
         </ul>
     </div>
     <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
+        <h3>Check Out</h3>
+        <ul style="padding-left:0;">
+            <input class="form-control" type="date" id="checkoutDate" onchange="myFunction()" />
+        </ul>
+
+    </div>
+    <div class="col-md-1">
+        <ul style="padding-left:0;">
+            <br />
+            <br />
+            <a class="btn btn-default" href="" style="background:white;border:solid #DDDDDD">Search &raquo;</a>
         </ul>
     </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
+    <script type="text/javascript">
+        myFunction = function () {
+
+            var chkInDate = new Date(document.getElementById("checkinDate").value);
+
+            var chkOutDate = new Date(document.getElementById("checkoutDate").value);
+            var timeDiff = Math.abs(chkOutDate.getTime() - chkInDate.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            document.getElementById("diff").innerHTML = diffDays
+
+            var price = 50 * diffDays;
+            document.getElementById("price_total").innerHTML = price;
+        }
+    </script>
+
+</div>
+<br />
+<div class="row" style="font-family:Verdana">
+    <div class="col-md-12">
+        <span style="font-weight: bold; font-size:medium">Just Booked</span>
+    </div>
+
+    <div class="col-md-4" style="font-size:xx-small">
+        <img src="~/images/ch1.jpg" style="width:100%; height:100%;">
+        <div style="font-size:medium">
+            <div style="font-weight: bold">
+                <span>฿500</span>
+                <span>CATCARE THAILAND</span>
+                @* @Html.ActionLink("฿500 CATCARE THAILAND", "Index", "Home")*@
+            </div>
+            <div style="font-size:xx-small">
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star-empty" style="font-size:small"></div>
+                <span style="font-size:small">1229 reviews</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4" style="font-size:xx-small">
+        <img src="~/images/ch2.jpg" style="width:100%; height:100%;">
+        <div style="font-size:medium">
+            <div style="font-weight: bold">
+                <span>฿500</span>
+                <span>CAT-AVENUE</span>
+            </div>
+            <div style="font-size:xx-small">
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <span style="font-size:small">981 reviews</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="font-size:xx-small">
+        <img src="~/images/ch3.png" style="width:100%; height:100%;">
+        <div style="font-size:medium">
+            <div style="font-weight: bold">
+                <span>฿380</span>
+                <span>CAT HOTERU</span>
+            </div>
+            <div style="font-size:xx-small">
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star-empty" style="font-size:small"></div>
+                <span style="font-size:small">588 reviews</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <span style="font-weight: bold;font-size:medium">Homes </span>
+    </div>
+
+    <div class="col-md-4" style="font-size:xx-small">
+        <img src="~/images/ch4.png" style="width:100%; height:100%;">
+        <div style="font-size:medium">
+            <div style="font-weight: bold">
+                <span>฿400</span>
+                <span>SKYPETSHOP</span>
+            </div>
+            <div style="font-size:xx-small">
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star-empty" style="font-size:small"></div>
+                <span style="font-size:small">762 reviews</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4" style="font-size:xx-small">
+        <img src="~/images/ch5.jpg" style="width:100%; height:100%;">
+        <div style="font-size:medium">
+            <div style="font-weight: bold">
+                <span>฿360</span>
+                <span>JOYUCATHOTEL</span>
+            </div>
+            <div style="font-size:xx-small">
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <span style="font-size:small">945 reviews</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="font-size:xx-small">
+        <img src="~/images/ch6.png" style="width:100%; height:100%;">
+        <div style="font-size:medium">
+            <div style="font-weight: bold">
+                <span>฿440</span>
+                <span>CASADECAT</span>
+            </div>
+            <div style="font-size:xx-small">
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                <span style="font-size:small">1921 reviews</span>
+            </div>
+        </div>
     </div>
 </div>
