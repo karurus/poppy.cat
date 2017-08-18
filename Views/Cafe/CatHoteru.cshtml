@@ -52,7 +52,8 @@
                 <span style = "padding: 0 20px" ></span > 
                 Total: <span id = "price_total" > 0 </span > ฿ </div >  <br />  
                 <span style = "padding: 0 85px" ></span >  
-                <input type = "button"class = "btn btn-default"value = "Book Now"onclick = "location.href='<%: @Url.Action("Book", "CafeController" ) %>'" />  </div >  
+                <input type = "button"class = "btn btn-default"value = "Book Now"onclick = "location.href='@Url.Action("BookingSuccess", "Book" )'" />   
+        </div >  
                 <br />  
                 <script type = "text/javascript" > 
                     document.getElementById('checkinDate').valueAsDate = new Date(); 
