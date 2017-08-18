@@ -10,3 +10,4 @@ c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.AssemblyInfoI
 c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.AssemblyInfo.cs
 c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.dll
 c:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.pdb
+C:\Users\Chi\Documents\poppy.cat\obj\Debug\netcoreapp2.0\poppy.cat.csprojResolveAssemblyReference.cache
