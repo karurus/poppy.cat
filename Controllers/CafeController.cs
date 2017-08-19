@@ -26,7 +26,7 @@ namespace poppy.cat.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult CatAvenue()
+        public ActionResult CatStation()
         {
             return View();
         }
