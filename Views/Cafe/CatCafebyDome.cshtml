@@ -8,7 +8,11 @@
         <metaname = "viewport"content = "width=device-width"/> 
         <title></title>  
     </head>  
-    <body>  
+    <body>
+        @{
+            int price = 120;
+            int timedDiff = 1;
+        }  
         <div class = "container-fluid"style = "border:1px solid #cecece;">  
             <div class = "row col-md-6">  
             <br />  
@@ -49,31 +53,58 @@
             <div class = "col-md-12" >  
                 <br />  
                 <span style = "padding: 0 20px" ></span > 
-                120฿ x <span id = "diff" > 0 </span > days =  <span id = "price" > 0 </span > ฿ <br />  
-                <span style = "padding: 0 20px" ></span > 
-                Total: <span id = "price_total" > 0 </span > ฿ </div >  <br />  
+                @price ฿ x <span id="diff"> @timedDiff </span> days = <span id="price"> @price </span> ฿ <br />
+                    <span style="padding: 0 20px"></span>
+                    Total: <span id="price_total"> @price </span> ฿    
+                </div>  <br />
                 <span style = "padding: 0 85px" ></span >  
                 <input type = "button"class = "btn btn-default"value = "Book Now"onclick = "location.href='@Url.Action("BookingSuccess", "Book" )'" />   
         </div >  
                 <br />  
                 <script type = "text/javascript" > 
-                    document.getElementById('checkinDate').valueAsDate = new Date(); 
-                    document.getElementById('checkoutDate').valueAsDate = new Date(); 
-                    myFunction = function () {
+                    var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
 
-                        var chkInDate = new Date(document.getElementById("checkinDate").value); 
-                        var chkOutDate = new Date(document.getElementById("checkoutDate").value); 
-                        var totalGuests = (document.getElementById("guests").value); 
-                        if (chkOutDate.getTime() > chkInDate.getTime()) {
-                            var timeDiff = Math.abs(chkOutDate.getTime() - chkInDate.getTime()); 
-                            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-                            document.getElementById("diff").innerHTML = diffDays; 
+                today = yyyy+'-'+mm+'-'+dd;
+                document.getElementById("checkinDate").setAttribute("min", today);
+                document.getElementById("checkoutDate").setAttribute("min", today);
 
-                            var price = 120 * diffDays; 
-                            document.getElementById("price").innerHTML = price; 
-                            document.getElementById("price_total").innerHTML = price * totalGuests; 
-                        }
-                    } 
+                document.getElementById('checkinDate').valueAsDate = new Date();
+                document.getElementById('checkoutDate').valueAsDate = new Date();
+                
+                var chkInDate;
+                var chkOutDate;
+                var totalGuests;
+                var timeDiff = @timedDiff;
+                var price = @price;
+                myFunction = function () {
+                    chkInDate = new Date(document.getElementById("checkinDate").value);
+                    chkOutDate = new Date(document.getElementById("checkoutDate").value);
+                    totalGuests = (document.getElementById("guests").value);
+                    
+                    timeDiff = Math.abs(chkOutDate.getTime() - chkInDate.getTime());
+                    diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    if (chkOutDate.getTime() > chkInDate.getTime()) {
+                        price = @price * diffDays;             
+                    }else if(chkOutDate.getTime() == chkInDate.getTime()){
+                        diffDays = @timedDiff;
+                        price = @price;
+                    }else if(chkOutDate.getTime() < chkInDate.getTime()){
+                        diffDays = @timedDiff;
+                        document.getElementById('checkoutDate').valueAsDate = document.getElementById('checkinDate').valueAsDate;
+                    }
+                    document.getElementById("diff").innerHTML = diffDays;
+                    document.getElementById("price").innerHTML = price;
+                    document.getElementById("price_total").innerHTML = price * totalGuests;
+                }
                 </script>  
             </div >  
             <br />  
