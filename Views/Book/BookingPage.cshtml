@@ -1,7 +1,7 @@
 @{
     ViewBag.Title = "Booking"; 
 } 
-<h2> Carameow Cat Cafe </h2>  
+<h2> @ViewBag.cafe.Name </h2>  
 <!DOCTYPE html>  
 <html>  
     <head>  
@@ -10,14 +10,14 @@
     </head>  
     <body>
         @{
-            int price = 160;
+            int price = ViewBag.cafe.Price;
             int timedDiff = 1;
         }  
         <div class = "container-fluid"style = "border:1px solid #cecece;">  
             <div class = "row col-md-6">  
             <br />  
             <center>  
-                <img src = "http://p4.isanook.com/tr/0/rp/r/w525/ya0xa0m1w0/aHR0cDovL3A0LmlzYW5vb2suY29tL3RyLzAvdWQvMjc5LzEzOTU4OTMvNzIuanBn.jpg" style="width:60%" /> 
+                <img src = "../images/Cafe/@ViewBag.cafe.Img" style="width:60%" /> 
             </center>  
               <br/>
         </div>  
@@ -29,7 +29,7 @@
                  <span style = "padding: 0 20px"></span >  
                  <span> Check In </span>  
                  <span style = "padding: 0 30px"></span >  
-                 <input class = "form-control"style = "padding-left:5em"type = "date"id = "checkinDate"onchange = "myFunction()"/>  
+                 <input class = "form-control"style = "padding-left:5em" type = "date" id = "checkinDate"onchange = "myFunction()"/>  
                  </div >  
             </form>  
             <br /><br /> 
@@ -38,7 +38,7 @@
                     <span style = "padding: 0 20px" ></span > 
                      <span > Check Out </span >  
                      <span style = "padding: 0 24px" ></span >  
-                     <input class = "form-control"style = "padding-left:5em"type = "date"id = "checkoutDate" onchange = "myFunction()"/>  
+                     <input class = "form-control"style = "padding-left:5em"type = "date" id = "checkoutDate" onchange = "myFunction()"/>  
                      </div > 
             </form >  
             <br /><br /> 
@@ -58,7 +58,7 @@
                 Total: <span id="price_total"> @price </span> ฿    
             </div >  <br />  
                 <span style = "padding: 0 85px" ></span >  
-                <input type = "button"class = "btn btn-default"value = "Book Now"onclick = "location.href='@Url.Action("BookingSuccess", "Book" )'" />
+                <input type = "button"class = "btn btn-default"value = "Book Now" onclick = "location.href='@Url.Action("BookingSuccess?id=@c.ID", "Book" )'" />
         </div >  
                 <br />  
                 <script type = "text/javascript" > 
@@ -110,7 +110,7 @@
             <br />  
             <div >  
                 <center >  
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15504.75950275128!2d100.5224112!3d13.7069471!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9df9291768c08cfd!2sCARAMEOW+Cat+Cafe!5e0!3m2!1sen!2sth!4v1503086402291" width="900" height="400" frameborder="0" style="border:0" allowfullscreen></iframe> 
+                    <iframe src="@ViewBag.cafe.Place" width="900" height="400" frameborder="0" style="border:0" allowfullscreen></iframe> 
                 </center > 
                 <br />  
             </div > 

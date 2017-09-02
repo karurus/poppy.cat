@@ -12,47 +12,15 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="~/images/c1.png" alt="ASP.NET" class="img-responsive" />
-            <!-- <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        See More
-                    </a>
-                </p>
-            </div> -->
         </div>
         <div class="item">
             <img src="~/images/c2.png" alt="Visual Studio" class="img-responsive" />
-            <!-- <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        See More
-                    </a>
-                </p>
-            </div> -->
         </div>
         <div class="item">
             <img src="~/images/c3.png" alt="Package Management" class="img-responsive" />
-            <!-- <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        See More
-                    </a>
-                </p>
-            </div> -->
         </div>
         <div class="item">
             <img src="~/images/c4.png" alt="Microsoft Azure" class="img-responsive" />
-            <!-- <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        See More
-                    </a>
-                </p>
-            </div> -->
         </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -77,43 +45,53 @@
     <div class="col-md-2">
         <h3>Guests</h3>
         <ul style="padding-left:0;">
-            <input class = "form-control"style = "padding-left:3em"type = "number"id = "guests"value = "1"min = "1"max = "5"placeholder = "1 Guest"/> 
+            <input class="form-control" style="padding-left:3em" type="number" id="guests" value="1" min="1" max="5" placeholder="1 Guest" />
         </ul>
     </div>
     <div class="col-md-3">
         <h3>Check In</h3>
         <ul style="padding-left:0;">
-            <input class="form-control" type="date" id="checkinDate" />
+            <input class="form-control" type="date" id="checkinDate" onchange="myFunction()"/>
         </ul>
     </div>
     <div class="col-md-3">
         <h3>Check Out</h3>
         <ul style="padding-left:0;">
-            <input class="form-control" type="date" id="checkoutDate" onchange="myFunction()" />
+            <input class="form-control" type="date" id="checkoutDate" onchange="myFunction()"/>
         </ul>
 
     </div>
     <div class="col-md-12">
         <ul style="padding-left:0;">
             <br />
-            <input type = "button"class = "btn btn-default"value = "Search &raquo;"onclick = "location.href='@Url.Action("Cafe", "Cafe" )'" />  
+            <input type="button" class="btn btn-default" value="Search &raquo;" onclick="location.href='@Url.Action("Cafe", "Cafe" )'" />
         </ul>
     </div>
-    <script type="text/javascript">
-        document.getElementById('checkinDate').valueAsDate = new Date(); 
-        document.getElementById('checkoutDate').valueAsDate = new Date(); 
-        myFunction = function () {
+    <script type = "text/javascript" > 
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    if(dd<10){
+                        dd='0'+dd
+                    } 
+                    if(mm<10){
+                        mm='0'+mm
+                    } 
 
-            var chkInDate = new Date(document.getElementById("checkinDate").value);
+                    today = yyyy+'-'+mm+'-'+dd;
+                    document.getElementById("checkinDate").setAttribute("min", today);
+                    document.getElementById("checkoutDate").setAttribute("min", today);
 
-            var chkOutDate = new Date(document.getElementById("checkoutDate").value);
-            var timeDiff = Math.abs(chkOutDate.getTime() - chkInDate.getTime());
-            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            document.getElementById("diff").innerHTML = diffDays
-
-            var price = 50 * diffDays;
-            document.getElementById("price_total").innerHTML = price;
-        }
+                    document.getElementById('checkinDate').valueAsDate = new Date();
+                    document.getElementById('checkoutDate').valueAsDate = new Date();
+                    myFunction = function () {
+                        chkInDate = new Date(document.getElementById("checkinDate").value);
+                        chkOutDate = new Date(document.getElementById("checkoutDate").value);
+                        if(chkOutDate.getTime() < chkInDate.getTime()){
+                            document.getElementById('checkoutDate').valueAsDate = document.getElementById('checkinDate').valueAsDate;
+                        }
+                    }
     </script>
 
 </div>
@@ -123,115 +101,29 @@
         <span style="font-weight: bold; font-size:medium">Just Booked</span>
     </div>
 
-    <div class="col-md-4" style="font-size:xx-small">
-        <a href="/Cafe/CatcareThailand"><img src="https://k.lnwfile.com/_/k/_raw/sj/e7/fn.jpg" style="width:100%; height:100%;"></a>
-        <div style="font-size:medium">
-            <div style="font-weight: bold">
-                <span>500฿</span>
-                <span>Catcare Thailand</span>
-                @* @Html.ActionLink("500฿ CATCARE THAILAND", "Index", "Home")*@
+    @foreach (CatCafe c in ViewBag.catcafes)
+    {
+        @if (c.ID <= 6)
+        {
+            <div class="col-md-4" style="font-size:xx-small">
+                <a href="/Book/BookingPage?id=@c.ID"><img src="~/images/cafe/@c.Img" style="width:100%; height:100%;"></a>
+                <div style="font-size:medium">
+                    <div style="font-weight: bold">
+                        <span>@c.Price฿</span>
+                        <span>@c.Name</span>
+                    </div>
+                    <div style="font-size:xx-small">
+                       @for (int i = 0; i < @c.RateStar; i++){
+                             <div class="glyphicon glyphicon-star" style="font-size:small"></div>
+                        }
+                          @for  (int i = 0; i < 5- @c.RateStar; i++){
+                               <div class="glyphicon glyphicon-star-empty" style="font-size:small"></div>
+                        }
+                        <span style="font-size:small">@c.RateNum reviews</span>
+                    </div>
+                </div>
             </div>
-            <div style="font-size:xx-small">
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star-empty" style="font-size:small"></div>
-                <span style="font-size:small">1229 reviews</span>
-            </div>
-        </div>
-    </div>
+         }
+     }
 
-
-    <div class="col-md-4" style="font-size:xx-small">
-        <a href="/Cafe/CatStation"><img src="https://i1.24x7th.com/df/0/ui/post/2016/08/21/0/b/d34174bd9f9ff10a2a314523fa861a35.jpeg" style="width:100%; height:100%;"></a>
-        <div style="font-size:medium">
-            <div style="font-weight: bold">
-                <span>500฿</span>
-                <span>Cat Station</span>
-            </div>
-            <div style="font-size:xx-small">
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <span style="font-size:small">981 reviews</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4" style="font-size:xx-small">
-        <a href="/Cafe/CatHoteru"><img src="http://static.wixstatic.com/media/a5b543_2ced27c6964e482eae7d024ed2750bd3.jpg_srz_4896_3264_85_22_0.50_1.20_0.00_jpg_srz" style="width:100%; height:100%;"></a>
-        <div style="font-size:medium">
-            <div style="font-weight: bold">
-                <span>380฿</span>
-                <span>Cat Hoteru</span>
-            </div>
-            <div style="font-size:xx-small">
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star-empty" style="font-size:small"></div>
-                <span style="font-size:small">588 reviews</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-12">
-        <span style="font-weight: bold;font-size:medium">Homes </span>
-    </div>
-
-    <div class="col-md-4" style="font-size:xx-small">
-        <a href="/Cafe/SkyPetShop"><img src="~/images/ch4.png" style="width:100%; height:100%;"></a>
-        <div style="font-size:medium">
-            <div style="font-weight: bold">
-                <span>400฿</span>
-                <span>Sky petShop</span>
-            </div>
-            <div style="font-size:xx-small">
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star-empty" style="font-size:small"></div>
-                <span style="font-size:small">762 reviews</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4" style="font-size:xx-small">
-        <a href="/Cafe/JoyuCatHotel"><img src="~/images/ch5.jpg" style="width:100%; height:100%;"></a>
-        <div style="font-size:medium">
-            <div style="font-weight: bold">
-                <span>360฿</span>
-                <span>JoYu Cat Hotel</span>
-            </div>
-            <div style="font-size:xx-small">
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <span style="font-size:small">945 reviews</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4" style="font-size:xx-small">
-        <a href="/Cafe/CasadeCat"><img src="http://i2.wp.com/www.casadecat.com/wp-content/uploads/2015/12/%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87-standard-s.jpg?zoom=1.5&fit=900%2C900" style="width:100%; height:100%;"></a>
-        <div style="font-size:medium">
-            <div style="font-weight: bold">
-                <span>440฿</span>
-                <span>Casa de Cat</span>
-            </div>
-            <div style="font-size:xx-small">
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <div class="glyphicon glyphicon-star" style="font-size:small"></div>
-                <span style="font-size:small">1921 reviews</span>
-            </div>
-        </div>
-    </div>
 </div>
