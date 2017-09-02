@@ -13121,12 +13121,15 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "c:\\Users\\Chi\\Documents\\poppy.cat\\poppy.cat.csproj",
+      "projectUniqueName": "C:\\Users\\Chi\\Documents\\poppy.cat\\poppy.cat.csproj",
       "projectName": "poppy.cat",
-      "projectPath": "c:\\Users\\Chi\\Documents\\poppy.cat\\poppy.cat.csproj",
+      "projectPath": "C:\\Users\\Chi\\Documents\\poppy.cat\\poppy.cat.csproj",
       "packagesPath": "C:\\Users\\Chi\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Chi\\Documents\\poppy.cat\\obj\\",
+      "outputPath": "C:\\Users\\Chi\\Documents\\poppy.cat\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13156,15 +13159,6 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "2.0.0"
-          },
           "Microsoft.EntityFrameworkCore.Tools": {
             "suppressParent": "All",
             "target": "Package",
@@ -13172,6 +13166,15 @@
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "suppressParent": "All",
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "2.0.0",
+            "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "2.0.0"
           }
