@@ -21,7 +21,7 @@
             </center>  
               <br/>
         </div>  
-        <div class = "row col-md-6">  
+        <div class = "col-md-6">  
         <br />  
         <div>  
             <form class = "form-inline">  
@@ -58,7 +58,7 @@
                 Total: <span id="price_total"> @price </span> ฿    
             </div >  <br />  
                 <span style = "padding: 0 85px" ></span >  
-                <input type = "button"class = "btn btn-default"value = "Book Now" onclick = "location.href='@Url.Action("BookingSuccess?id=@c.ID", "Book" )'" />
+                <input type = "button"class = "btn btn-default"value = "Book Now" onclick = "location.href='@Url.Action("BookingSuccess", "Book" )'" />
         </div >  
                 <br />  
                 <script type = "text/javascript" > 
@@ -107,11 +107,11 @@
                     }
                 </script>  
             </div >  
-            <br />  
-            <div >  
-                <center >  
-                    <iframe src="@ViewBag.cafe.Place" width="900" height="400" frameborder="0" style="border:0" allowfullscreen></iframe> 
-                </center > 
+            
+            <div class="col-xs-12">   
+                <center>
+                    <iframe src="@ViewBag.cafe.Place" width="82%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe> 
+                <center>
                 <br />  
             </div > 
         </div > 

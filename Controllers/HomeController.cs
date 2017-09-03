@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using poppy.cat.Models;
-
+using System.Linq;
 
 namespace poppy.cat.Controllers
 {
